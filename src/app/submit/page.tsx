@@ -154,7 +154,7 @@ export default function SubmitPage() {
           {/* Step 1: Case Information */}
           {currentStep === 1 && (
             <div className="toss-card fade-in-up">
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">📋 사건 정보를 알려주세요</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">사건 정보를 알려주세요</h2>
               
               <div className="space-y-6">
                 <div>
@@ -195,7 +195,7 @@ export default function SubmitPage() {
                     placeholder="언제, 어디서, 어떤 일이 발생했는지 구체적으로 작성해주세요.&#10;&#10;예시:&#10;- 발생 일시: 2024년 1월 15일&#10;- 발생 장소: 서울시 강남구 ○○동&#10;- 피해 내용: 온라인 쇼핑몰에서 상품을 주문했으나 돈만 받고 상품을 보내지 않음&#10;- 피해 금액: 50만원&#10;- 상대방 정보: 쇼핑몰 운영자 김○○"
                   />
                   <p className="mt-2 text-sm text-gray-500">
-                    💡 상세할수록 더 정확한 고소장이 작성됩니다
+                    상세할수록 더 정확한 고소장이 작성됩니다
                   </p>
                 </div>
               </div>
@@ -218,7 +218,7 @@ export default function SubmitPage() {
           {/* Step 2: Personal Information */}
           {currentStep === 2 && (
             <div className="toss-card fade-in-up">
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">👤 개인정보를 입력해주세요</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">개인정보를 입력해주세요</h2>
               
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -307,7 +307,7 @@ export default function SubmitPage() {
           {/* Step 3: Additional Information & Submit */}
           {currentStep === 3 && (
             <div className="toss-card fade-in-up">
-              <h2 className="text-2xl font-bold text-gray-900 mb-8">📎 추가 정보 (선택사항)</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">추가 정보 (선택사항)</h2>
               
               <div className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -373,7 +373,7 @@ export default function SubmitPage() {
                       <ul className="space-y-1">
                         {formData.files.map((file, index) => (
                           <li key={index} className="text-sm text-blue-600 bg-blue-50 px-3 py-2 rounded-lg">
-                            📄 {file.name}
+                            {file.name}
                           </li>
                         ))}
                       </ul>
@@ -383,7 +383,7 @@ export default function SubmitPage() {
               </div>
 
               <div className="mt-12 p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl border border-blue-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">🚀 이제 AI가 고소장을 작성합니다!</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">이제 AI가 고소장을 작성합니다!</h3>
                 <ul className="space-y-2 text-gray-700">
                   <li className="flex items-center space-x-2">
                     <span className="w-2 h-2 bg-blue-600 rounded-full"></span>
@@ -424,7 +424,7 @@ export default function SubmitPage() {
                       <span>AI가 고소장을 작성 중...</span>
                     </div>
                   ) : (
-                    '✨ AI 고소장 생성하기'
+                    'AI 고소장 생성하기'
                   )}
                 </button>
               </div>

@@ -129,7 +129,7 @@ export default function ResultPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">🎉 고소장 생성 완료!</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">고소장 생성 완료!</h1>
           <p className="text-xl text-gray-600">
             AI가 작성한 전문적인 고소장이 준비되었습니다
           </p>
@@ -139,7 +139,11 @@ export default function ResultPage() {
         <div className="toss-card mb-8">
           <div className="flex items-start justify-between mb-6">
             <div className="flex items-center space-x-4">
-              <span className="text-3xl">{getCaseTypeIcon(complaint.case_type)}</span>
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
               <div>
                 <h2 className="text-2xl font-bold text-gray-900">{complaint.case_type} 사건</h2>
                 <p className="text-gray-600">접수자: {complaint.user_name}</p>
@@ -172,7 +176,7 @@ export default function ResultPage() {
 
         {/* Case Description */}
         <div className="toss-card mb-8">
-          <h3 className="text-xl font-bold text-gray-900 mb-4">📋 사건 개요</h3>
+          <h3 className="text-xl font-bold text-gray-900 mb-4">사건 개요</h3>
           <div className="bg-gray-50 rounded-xl p-6">
             <p className="text-gray-700 leading-relaxed whitespace-pre-wrap">
               {complaint.description}
@@ -183,7 +187,7 @@ export default function ResultPage() {
         {/* Generated Complaint */}
         <div className="toss-card mb-8">
           <div className="flex items-center justify-between mb-6">
-            <h3 className="text-xl font-bold text-gray-900">📄 AI 생성 고소장</h3>
+            <h3 className="text-xl font-bold text-gray-900">AI 생성 고소장</h3>
             <div className="flex items-center space-x-3">
               <button
                 onClick={() => setShowFullComplaint(!showFullComplaint)}
@@ -195,7 +199,7 @@ export default function ResultPage() {
                 onClick={handleDownload}
                 className="toss-button-primary text-sm px-4 py-2"
               >
-                📥 다운로드
+                다운로드
               </button>
             </div>
           </div>

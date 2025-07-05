@@ -7,8 +7,16 @@ export async function POST(request: NextRequest) {
   try {
     const { caseType, description, userName, userSsn, userPhone } = await request.json();
 
+    // 필수 필드 검증
+    if (!caseType || !description || !userName || !userSsn || !userPhone) {
+      return NextResponse.json({ 
+        error: '필수 정보가 누락되었습니다.' 
+      }, { status: 400 });
+    }
+
     const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
+    // AppScript 데모의 프롬프트를 참조하여 개선
     const prompt = `당신은 전문 법무사입니다. 아래 정보를 바탕으로 정식 고소장을 작성해주세요.
 
 사건 유형: ${caseType}
@@ -25,6 +33,7 @@ export async function POST(request: NextRequest) {
 3. 해당 사건 유형에 적합한 법조문 인용
 4. 전문적이고 정확한 법률 용어 사용
 5. 실제 경찰서에 제출 가능한 수준의 완성도
+6. 한국어로 작성하고, 법률 문서의 표준 형식을 따름
 
 고소장을 작성해주세요.`;
 
@@ -32,14 +41,51 @@ export async function POST(request: NextRequest) {
     const response = await result.response;
     const complaintDraft = response.text();
 
+    // 응답 검증
+    if (!complaintDraft || complaintDraft.trim().length === 0) {
+      throw new Error('AI가 고소장을 생성하지 못했습니다.');
+    }
+
     return NextResponse.json({ 
       success: true,
       complaintDraft 
     });
   } catch (error) {
     console.error('Error generating complaint:', error);
+    
+    // AI 생성 실패시 기본 템플릿 반환
+    const { caseType, description, userName, userSsn, userPhone } = await request.json();
+    
+    const fallbackDraft = `고 소 장
+
+고소인
+성명: ${userName}
+주민등록번호: ${userSsn.substring(0, 6)}-*******
+전화번호: ${userPhone}
+
+피고소인
+성명: 불상
+주민등록번호: 불상
+주소: 불상
+
+고소 취지
+피고소인을 ${caseType}죄로 처벌하여 주시기 바랍니다.
+
+고소 사실
+${description}
+
+위와 같은 사실로 피고소인을 고소하오니 철저히 수사하여 엄벌에 처해 주시기 바랍니다.
+
+${new Date().toLocaleDateString('ko-KR')}
+
+고소인 ${userName} (인)
+
+○○경찰서장 귀하`;
+
     return NextResponse.json({ 
-      error: 'Failed to generate complaint' 
-    }, { status: 500 });
+      success: true,
+      complaintDraft: fallbackDraft,
+      message: 'AI 생성에 실패하여 기본 템플릿을 사용했습니다.'
+    });
   }
 }
