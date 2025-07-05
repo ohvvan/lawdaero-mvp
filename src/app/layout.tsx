@@ -39,9 +39,15 @@ export default function RootLayout({
                 </div>
                 <nav className="hidden md:flex items-center space-x-2" aria-label="메인 네비게이션">
                   <a href="/" className="px-6 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-2xl transition-all duration-300 font-medium min-h-[48px] flex items-center focus:ring-4 focus:ring-primary-500/20 focus:outline-none" aria-current="page">홈</a>
-                  <a href="/submit" className="px-6 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-2xl transition-all duration-300 font-medium min-h-[48px] flex items-center focus:ring-4 focus:ring-primary-500/20 focus:outline-none">고소장 접수</a>
-                  <a href="/cases" className="px-6 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-2xl transition-all duration-300 font-medium min-h-[48px] flex items-center focus:ring-4 focus:ring-primary-500/20 focus:outline-none">접수 현황</a>
+                  <a href="/about" className="px-6 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-2xl transition-all duration-300 font-medium min-h-[48px] flex items-center focus:ring-4 focus:ring-primary-500/20 focus:outline-none">회사 소개</a>
+                  <a href="/notice" className="px-6 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-2xl transition-all duration-300 font-medium min-h-[48px] flex items-center focus:ring-4 focus:ring-primary-500/20 focus:outline-none">공지사항</a>
+                  <a href="/contact" className="px-6 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-2xl transition-all duration-300 font-medium min-h-[48px] flex items-center focus:ring-4 focus:ring-primary-500/20 focus:outline-none">고객센터</a>
+                  <a href="/faq" className="px-6 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-2xl transition-all duration-300 font-medium min-h-[48px] flex items-center focus:ring-4 focus:ring-primary-500/20 focus:outline-none">FAQ</a>
                 </nav>
+                <div className="hidden md:flex items-center space-x-2">
+                  <a href="/auth" className="px-6 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-2xl transition-all duration-300 font-medium min-h-[48px] flex items-center focus:ring-4 focus:ring-primary-500/20 focus:outline-none">로그인</a>
+                  <a href="/account" className="px-6 py-3 bg-primary-600 text-white hover:bg-primary-700 rounded-2xl transition-all duration-300 font-medium min-h-[48px] flex items-center focus:ring-4 focus:ring-primary-500/20 focus:outline-none">내 계정</a>
+                </div>
                 <div className="md:hidden">
                   <button 
                     className="p-3 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-2xl transition-all duration-300 min-h-[48px] min-w-[48px] focus:ring-4 focus:ring-primary-500/20 focus:outline-none"
@@ -98,17 +104,17 @@ export default function RootLayout({
                   <ul className="space-y-3">
                     <li><a href="/submit" className="text-gray-600 hover:text-primary-600 transition-colors">고소장 작성</a></li>
                     <li><a href="/cases" className="text-gray-600 hover:text-primary-600 transition-colors">접수 현황</a></li>
-                    <li><a href="#" className="text-gray-600 hover:text-primary-600 transition-colors">법률 상담</a></li>
-                    <li><a href="#" className="text-gray-600 hover:text-primary-600 transition-colors">FAQ</a></li>
+                    <li><a href="/about" className="text-gray-600 hover:text-primary-600 transition-colors">회사 소개</a></li>
+                    <li><a href="/faq" className="text-gray-600 hover:text-primary-600 transition-colors">FAQ</a></li>
                   </ul>
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">고객지원</h3>
                   <ul className="space-y-3">
-                    <li><a href="#" className="text-gray-600 hover:text-primary-600 transition-colors">문의하기</a></li>
-                    <li><a href="#" className="text-gray-600 hover:text-primary-600 transition-colors">이용약관</a></li>
-                    <li><a href="#" className="text-gray-600 hover:text-primary-600 transition-colors">개인정보처리방침</a></li>
-                    <li><a href="#" className="text-gray-600 hover:text-primary-600 transition-colors">고객센터</a></li>
+                    <li><a href="/contact" className="text-gray-600 hover:text-primary-600 transition-colors">문의하기</a></li>
+                    <li><a href="/notice" className="text-gray-600 hover:text-primary-600 transition-colors">공지사항</a></li>
+                    <li><a href="/terms" className="text-gray-600 hover:text-primary-600 transition-colors">이용약관</a></li>
+                    <li><a href="/privacy" className="text-gray-600 hover:text-primary-600 transition-colors">개인정보처리방침</a></li>
                   </ul>
                 </div>
               </div>

@@ -25,21 +25,21 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link
-                href="/submit"
+                href="/auth"
                 className="btn-primary text-xl px-12 py-6 w-full sm:w-auto group"
               >
                 <span className="flex items-center justify-center space-x-3">
-                  <span>고소장 작성 시작하기</span>
+                  <span>무료로 고소 접수</span>
                   <svg className="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </span>
               </Link>
               <Link
-                href="/cases"
+                href="/about"
                 className="btn-outline text-xl px-12 py-6 w-full sm:w-auto"
               >
-                접수 현황 확인
+                서비스 알아보기
               </Link>
             </div>
           </div>
@@ -160,11 +160,11 @@ export default function Home() {
             AI가 도와드릴게요.
           </p>
           <Link
-            href="/submit"
+            href="/auth"
             className="inline-block bg-white text-primary-600 font-bold py-6 px-12 rounded-3xl text-xl hover:bg-gray-100 transition-all duration-300 shadow-large hover:shadow-2xl transform hover:scale-105 group"
           >
             <span className="flex items-center justify-center space-x-3">
-              <span>무료로 고소장 작성하기</span>
+              <span>무료로 고소 접수하기</span>
               <svg className="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
