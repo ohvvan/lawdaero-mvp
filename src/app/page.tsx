@@ -2,7 +2,13 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600 relative overflow-hidden">
+    <div 
+      className="min-h-screen relative overflow-hidden"
+      style={{
+        background: 'linear-gradient(135deg, #2563eb 0%, #3b82f6 50%, #8b5cf6 100%)',
+        minHeight: '100vh'
+      }}
+    >
       {/* 백그라운드 장식 요소 */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-white/20 rounded-full mix-blend-multiply filter blur-xl"></div>
@@ -47,7 +53,28 @@ export default function Home() {
 
           {/* 특징 카드들 */}
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 text-center space-y-4 hover:shadow-2xl hover:border-gray-200 transition-all duration-300 hover:scale-105">
+            <div 
+              className="text-center"
+              style={{
+                backgroundColor: 'white',
+                borderRadius: '1rem',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                border: '1px solid #f3f4f6',
+                padding: '2rem',
+                transition: 'all 0.3s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.05)';
+                e.currentTarget.style.boxShadow = '0 35px 60px -12px rgba(0, 0, 0, 0.35)';
+                e.currentTarget.style.borderColor = '#d1d5db';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+                e.currentTarget.style.borderColor = '#f3f4f6';
+              }}
+            >
               <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto">
                 <span className="text-3xl">⚡</span>
               </div>
@@ -55,7 +82,28 @@ export default function Home() {
               <p className="text-gray-600">평균 5분 내로<br />고소장 작성 완료</p>
             </div>
             
-            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 text-center space-y-4 hover:shadow-2xl hover:border-gray-200 transition-all duration-300 hover:scale-105">
+            <div 
+              className="text-center"
+              style={{
+                backgroundColor: 'white',
+                borderRadius: '1rem',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                border: '1px solid #f3f4f6',
+                padding: '2rem',
+                transition: 'all 0.3s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.05)';
+                e.currentTarget.style.boxShadow = '0 35px 60px -12px rgba(0, 0, 0, 0.35)';
+                e.currentTarget.style.borderColor = '#d1d5db';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+                e.currentTarget.style.borderColor = '#f3f4f6';
+              }}
+            >
               <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto">
                 <span className="text-3xl">💰</span>
               </div>
@@ -63,7 +111,28 @@ export default function Home() {
               <p className="text-gray-600">접수부터 합의금,<br />형사처벌까지 무료</p>
             </div>
             
-            <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 text-center space-y-4 hover:shadow-2xl hover:border-gray-200 transition-all duration-300 hover:scale-105">
+            <div 
+              className="text-center"
+              style={{
+                backgroundColor: 'white',
+                borderRadius: '1rem',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                border: '1px solid #f3f4f6',
+                padding: '2rem',
+                transition: 'all 0.3s ease',
+                cursor: 'pointer'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.05)';
+                e.currentTarget.style.boxShadow = '0 35px 60px -12px rgba(0, 0, 0, 0.35)';
+                e.currentTarget.style.borderColor = '#d1d5db';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+                e.currentTarget.style.borderColor = '#f3f4f6';
+              }}
+            >
               <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto">
                 <span className="text-3xl">🤖</span>
               </div>
@@ -87,7 +156,29 @@ export default function Home() {
               {/* 메인 CTA 버튼 */}
               <Link
                 href="/submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xl py-6 px-8 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1 block text-center group focus:ring-4 focus:ring-blue-300"
+                className="w-full block text-center group"
+                style={{
+                  backgroundColor: '#3b82f6',
+                  color: 'white',
+                  fontWeight: 'bold',
+                  fontSize: '1.25rem',
+                  padding: '1.5rem 2rem',
+                  borderRadius: '1rem',
+                  textDecoration: 'none',
+                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                  transition: 'all 0.3s ease',
+                  transform: 'translateY(0)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = '#2563eb';
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)';
+                  e.currentTarget.style.boxShadow = '0 35px 60px -12px rgba(0, 0, 0, 0.35)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = '#3b82f6';
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+                }}
                 aria-label="무료로 고소장 작성 시작하기"
               >
                 <span className="flex items-center justify-center space-x-3">
