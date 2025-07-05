@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 토스 스타일 폰트 및 기본 설정 */
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+}
+
+/* 토스 스타일 컴포넌트 */
+@layer components {
+  .toss-button-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-[0.98] min-h-[44px] min-w-[44px] focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+  
+  .toss-button-secondary {
+    @apply bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-4 px-6 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98] min-h-[44px] min-w-[44px] focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+  }
+  
+  .toss-card {
+    @apply bg-white rounded-2xl shadow-lg border border-gray-100 p-6 transition-all duration-200 hover:shadow-xl hover:border-gray-200;
+  }
+  
+  .toss-input {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white min-h-[44px] text-gray-900;
+  }
+  
+  .toss-select {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white appearance-none;
+  }
+  
+  .toss-textarea {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white resize-none;
+  }
+  
+  .toss-gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .toss-hero-gradient {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+}
+
+/* 스크롤바 스타일링 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* 다크 모드 지원 */
+@layer base {
+  :root {
+    --background: 249 250 251;
+    --foreground: 17 24 39;
+    --primary: 59 130 246;
+    --primary-foreground: 255 255 255;
+    --secondary: 243 244 246;
+    --secondary-foreground: 55 65 81;
+    --muted: 156 163 175;
+    --border: 229 231 235;
+    --input: 249 250 251;
+    --ring: 59 130 246;
+  }
+  
+  .dark {
+    --background: 17 24 39;
+    --foreground: 249 250 251;
+    --primary: 59 130 246;
+    --primary-foreground: 255 255 255;
+    --secondary: 31 41 55;
+    --secondary-foreground: 209 213 219;
+    --muted: 107 114 128;
+    --border: 55 65 81;
+    --input: 31 41 55;
+    --ring: 59 130 246;
+  }
+}
+
+/* 접근성 향상 */
+.focus-visible {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+  .toss-button-primary {
+    @apply border-2 border-blue-800;
+  }
+  
+  .toss-card {
+    @apply border-2 border-gray-400;
+  }
+}
+
+/* 움직임 감소 설정 지원 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 애니메이션 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    transform: translate3d(0,0,0);
+  }
+  40%, 43% {
+    transform: translate3d(0, -30px, 0);
+  }
+  70% {
+    transform: translate3d(0, -15px, 0);
+  }
+  90% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+.bounce-animation {
+  animation: bounce 1s ease infinite;
+}
+
+/* 마이크로 인터랙션 */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* 접근성 개선 - 스크린 리더 전용 텍스트 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 터치 디바이스 최적화 */
+@media (hover: none) and (pointer: coarse) {
+  .toss-button-primary,
+  .toss-button-secondary {
+    @apply active:scale-95;
+  }
+  
+  .toss-card {
+    @apply active:scale-[0.99];
+  }
+}
+
+/* 고대비 테마 */
+.high-contrast {
+  filter: contrast(200%) brightness(120%);
+}
+
+/* 로딩 스켈레톤 */
+.skeleton {
+  @apply bg-gray-200 animate-pulse rounded;
+}
+
+.skeleton-text {
+  @apply skeleton h-4 mb-2;
+}
+
+.skeleton-title {
+  @apply skeleton h-6 mb-4;
+}
+
+.skeleton-button {
+  @apply skeleton h-11 w-32;
+}

@@ -1,0 +1,13 @@
+[project]
+name = "lawdaero-mvp"
+version = "0.1.0"
+description = "법대로go - AI 고소장 자동 생성 플랫폼 MVP"
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.uv]
+dev-dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
