@@ -25,7 +25,7 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Link
-                href="/auth"
+                href="/submit"
                 className="btn-primary text-xl px-12 py-6 w-full sm:w-auto group"
               >
                 <span className="flex items-center justify-center space-x-3">
@@ -160,7 +160,7 @@ export default function Home() {
             AI가 도와드릴게요.
           </p>
           <Link
-            href="/auth"
+            href="/submit"
             className="inline-block bg-white text-primary-600 font-bold py-6 px-12 rounded-3xl text-xl hover:bg-gray-100 transition-all duration-300 shadow-large hover:shadow-2xl transform hover:scale-105 group"
           >
             <span className="flex items-center justify-center space-x-3">

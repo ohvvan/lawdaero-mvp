@@ -39,6 +39,7 @@ export default function RootLayout({
                 </div>
                 <nav className="hidden md:flex items-center space-x-2" aria-label="메인 네비게이션">
                   <a href="/" className="px-6 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-2xl transition-all duration-300 font-medium min-h-[48px] flex items-center focus:ring-4 focus:ring-primary-500/20 focus:outline-none" aria-current="page">홈</a>
+                  <a href="/submit" className="px-6 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-2xl transition-all duration-300 font-medium min-h-[48px] flex items-center focus:ring-4 focus:ring-primary-500/20 focus:outline-none">고소장 접수</a>
                   <a href="/about" className="px-6 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-2xl transition-all duration-300 font-medium min-h-[48px] flex items-center focus:ring-4 focus:ring-primary-500/20 focus:outline-none">회사 소개</a>
                   <a href="/notice" className="px-6 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-2xl transition-all duration-300 font-medium min-h-[48px] flex items-center focus:ring-4 focus:ring-primary-500/20 focus:outline-none">공지사항</a>
                   <a href="/contact" className="px-6 py-3 text-gray-700 hover:text-primary-600 hover:bg-primary-50 rounded-2xl transition-all duration-300 font-medium min-h-[48px] flex items-center focus:ring-4 focus:ring-primary-500/20 focus:outline-none">고객센터</a>
