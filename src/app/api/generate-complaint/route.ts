@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
+// API 키 검증
+const apiKey = process.env.GEMINI_API_KEY;
+if (!apiKey) {
+  console.error('GEMINI_API_KEY가 설정되지 않았습니다.');
+}
+
+const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null;
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,6 +18,18 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ 
         error: '필수 정보가 누락되었습니다.' 
       }, { status: 400 });
+    }
+
+    // API 키가 없으면 바로 fallback 템플릿 사용
+    if (!genAI || !apiKey) {
+      console.log('GEMINI_API_KEY가 없어 기본 템플릿을 사용합니다.');
+      const fallbackDraft = generateFallbackTemplate(caseType, description, userName, userSsn, userPhone);
+      
+      return NextResponse.json({ 
+        success: true,
+        complaintDraft: fallbackDraft,
+        message: 'AI 서비스가 일시적으로 사용할 수 없어 기본 템플릿을 사용했습니다.'
+      });
     }
 
     const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
@@ -56,12 +74,27 @@ export async function POST(request: NextRequest) {
     // AI 생성 실패시 기본 템플릿 반환
     const { caseType, description, userName, userSsn, userPhone } = await request.json();
     
-    const fallbackDraft = `고 소 장
+    const fallbackDraft = generateFallbackTemplate(caseType, description, userName, userSsn, userPhone);
+
+    return NextResponse.json({ 
+      success: true,
+      complaintDraft: fallbackDraft,
+      message: 'AI 생성에 실패하여 기본 템플릿을 사용했습니다.'
+    });
+  }
+}
+
+// Fallback 템플릿 생성 함수
+function generateFallbackTemplate(caseType: string, description: string, userName: string, userSsn: string, userPhone: string) {
+  const currentDate = new Date().toLocaleDateString('ko-KR');
+  
+  return `고 소 장
 
 고소인
 성명: ${userName}
 주민등록번호: ${userSsn.substring(0, 6)}-*******
 전화번호: ${userPhone}
+주소: (고소인의 실제 주소를 기재하세요)
 
 피고소인
 성명: 불상
@@ -71,21 +104,19 @@ export async function POST(request: NextRequest) {
 고소 취지
 피고소인을 ${caseType}죄로 처벌하여 주시기 바랍니다.
 
-고소 사실
+고소 이유
 ${description}
+
+입증 방법
+1. 증거자료 첨부
+2. 증인 진술
+3. 기타 관련 자료
 
 위와 같은 사실로 피고소인을 고소하오니 철저히 수사하여 엄벌에 처해 주시기 바랍니다.
 
-${new Date().toLocaleDateString('ko-KR')}
+${currentDate}
 
 고소인 ${userName} (인)
 
 ○○경찰서장 귀하`;
-
-    return NextResponse.json({ 
-      success: true,
-      complaintDraft: fallbackDraft,
-      message: 'AI 생성에 실패하여 기본 템플릿을 사용했습니다.'
-    });
-  }
 }
