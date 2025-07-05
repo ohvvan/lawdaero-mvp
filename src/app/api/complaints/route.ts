@@ -22,8 +22,10 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('POST /api/complaints 호출됨');
     const supabase = await createClient();
     const body = await request.json();
+    console.log('요청 데이터:', body);
 
     // 주민번호 해시화
     const ssnHash = crypto.createHash('sha256').update(body.ssn).digest('hex');
@@ -111,6 +113,7 @@ ${new Date().toLocaleDateString('ko-KR')}
     }
 
     // 데이터베이스에 저장
+    console.log('Supabase에 데이터 저장 시도...');
     const { data, error } = await supabase
       .from('complaints')
       .insert({
@@ -126,7 +129,12 @@ ${new Date().toLocaleDateString('ko-KR')}
       .select()
       .single();
 
-    if (error) throw error;
+    if (error) {
+      console.error('Supabase 저장 오류:', error);
+      throw error;
+    }
+    
+    console.log('Supabase 저장 성공:', data);
 
     return NextResponse.json({ 
       success: true, 
