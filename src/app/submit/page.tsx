@@ -153,7 +153,7 @@ export default function SubmitPage() {
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Step 1: Case Information */}
           {currentStep === 1 && (
-            <div className="toss-card fade-in-up">
+            <div className="card-hover animate-fade-in-up">
               <h2 className="text-2xl font-bold text-gray-900 mb-8">사건 정보를 알려주세요</h2>
               
               <div className="space-y-6">
@@ -167,7 +167,7 @@ export default function SubmitPage() {
                     required
                     value={formData.caseType}
                     onChange={handleInputChange}
-                    className="toss-select text-lg"
+                    className="select text-lg"
                     aria-describedby="caseType-help"
                   >
                     <option value="">사건 유형을 선택하세요</option>
@@ -191,7 +191,7 @@ export default function SubmitPage() {
                     required
                     value={formData.description}
                     onChange={handleInputChange}
-                    className="toss-textarea text-lg"
+                    className="textarea text-lg"
                     placeholder="언제, 어디서, 어떤 일이 발생했는지 구체적으로 작성해주세요.&#10;&#10;예시:&#10;- 발생 일시: 2024년 1월 15일&#10;- 발생 장소: 서울시 강남구 ○○동&#10;- 피해 내용: 온라인 쇼핑몰에서 상품을 주문했으나 돈만 받고 상품을 보내지 않음&#10;- 피해 금액: 50만원&#10;- 상대방 정보: 쇼핑몰 운영자 김○○"
                   />
                   <p className="mt-2 text-sm text-gray-500">
@@ -205,7 +205,7 @@ export default function SubmitPage() {
                   type="button"
                   onClick={nextStep}
                   disabled={!canProceedFromStep1}
-                  className={`toss-button-primary text-lg px-8 py-4 ${
+                  className={`btn-primary text-lg px-8 py-4 ${
                     !canProceedFromStep1 ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 >
@@ -217,7 +217,7 @@ export default function SubmitPage() {
 
           {/* Step 2: Personal Information */}
           {currentStep === 2 && (
-            <div className="toss-card fade-in-up">
+            <div className="card-hover animate-fade-in-up">
               <h2 className="text-2xl font-bold text-gray-900 mb-8">개인정보를 입력해주세요</h2>
               
               <div className="space-y-6">
@@ -233,7 +233,7 @@ export default function SubmitPage() {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="toss-input text-lg"
+                      className="input text-lg"
                       placeholder="홍길동"
                     />
                   </div>
@@ -249,7 +249,7 @@ export default function SubmitPage() {
                       required
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className="toss-input text-lg"
+                      className="input text-lg"
                       placeholder="010-0000-0000"
                     />
                   </div>
@@ -266,7 +266,7 @@ export default function SubmitPage() {
                     required
                     value={formData.ssn}
                     onChange={handleInputChange}
-                    className="toss-input text-lg"
+                    className="input text-lg"
                     placeholder="000000-0000000"
                   />
                   <div className="mt-3 p-4 bg-blue-50 rounded-xl">
@@ -286,7 +286,7 @@ export default function SubmitPage() {
                 <button
                   type="button"
                   onClick={prevStep}
-                  className="toss-button-secondary text-lg px-8 py-4"
+                  className="btn-secondary text-lg px-8 py-4"
                 >
                   ← 이전 단계
                 </button>
@@ -294,7 +294,7 @@ export default function SubmitPage() {
                   type="button"
                   onClick={nextStep}
                   disabled={!canProceedFromStep2}
-                  className={`toss-button-primary text-lg px-8 py-4 ${
+                  className={`btn-primary text-lg px-8 py-4 ${
                     !canProceedFromStep2 ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 >
@@ -306,7 +306,7 @@ export default function SubmitPage() {
 
           {/* Step 3: Additional Information & Submit */}
           {currentStep === 3 && (
-            <div className="toss-card fade-in-up">
+            <div className="card-hover animate-fade-in-up">
               <h2 className="text-2xl font-bold text-gray-900 mb-8">추가 정보 (선택사항)</h2>
               
               <div className="space-y-6">
@@ -321,7 +321,7 @@ export default function SubmitPage() {
                       name="bank"
                       value={formData.bank}
                       onChange={handleInputChange}
-                      className="toss-input text-lg"
+                      className="input text-lg"
                       placeholder="예: 국민은행 (피해 회복을 위한 정보)"
                     />
                   </div>
@@ -336,7 +336,7 @@ export default function SubmitPage() {
                       name="account"
                       value={formData.account}
                       onChange={handleInputChange}
-                      className="toss-input text-lg"
+                      className="input text-lg"
                       placeholder="000000-00-000000"
                     />
                   </div>
@@ -404,14 +404,14 @@ export default function SubmitPage() {
                 <button
                   type="button"
                   onClick={prevStep}
-                  className="toss-button-secondary text-lg px-8 py-4"
+                  className="btn-secondary text-lg px-8 py-4"
                 >
                   ← 이전 단계
                 </button>
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className={`toss-button-primary text-lg px-12 py-4 ${
+                  className={`btn-primary text-lg px-12 py-4 ${
                     isLoading ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 >
