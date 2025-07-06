@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // API 키 검증
-const apiKey = process.env.GEMINI_API_KEY;
+const apiKey = process.env.GOOGLE_AI_API_KEY;
 if (!apiKey) {
-  console.error('GEMINI_API_KEY가 설정되지 않았습니다.');
+  console.error('GOOGLE_AI_API_KEY가 설정되지 않았습니다.');
 }
 
 const genAI = apiKey ? new GoogleGenerativeAI(apiKey) : null;

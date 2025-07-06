@@ -2,6 +2,7 @@
 
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
+import { CASE_TYPES, API_ENDPOINTS, ERROR_MESSAGES } from '@/constants';
 
 interface FormData {
   caseType: string;
@@ -29,20 +30,6 @@ export default function SubmitPage() {
     files: []
   });
 
-  const caseTypes = [
-    '사기',
-    '횡령',
-    '배임',
-    '명예훼손',
-    '모욕',
-    '협박',
-    '폭행',
-    '상해',
-    '절도',
-    '사문서위조',
-    '기타'
-  ];
-
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -65,7 +52,7 @@ export default function SubmitPage() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/complaints', {
+      const response = await fetch(API_ENDPOINTS.COMPLAINTS, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +64,7 @@ export default function SubmitPage() {
         const result = await response.json();
         router.push(`/result/${result.id}`);
       } else {
-        alert('접수 중 오류가 발생했습니다.');
+        alert(ERROR_MESSAGES.SUBMIT_FAILED);
       }
     } catch (error) {
       console.error('Submit error:', error);
@@ -171,7 +158,7 @@ export default function SubmitPage() {
                     aria-describedby="caseType-help"
                   >
                     <option value="">사건 유형을 선택하세요</option>
-                    {caseTypes.map(type => (
+                    {CASE_TYPES.map(type => (
                       <option key={type} value={type}>{type}</option>
                     ))}
                   </select>
